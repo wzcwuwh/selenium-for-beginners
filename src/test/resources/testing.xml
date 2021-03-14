@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="LoginTest" verbose="1" >
+    <test name="correctLoginTest" >
+        <parameter name="username" value="tomsmith"></parameter>
+        <parameter name="password" value="SuperSecretPassword!"></parameter>
+        <parameter name="expectedUrl" value="http://the-internet.herokuapp.com/secure"></parameter>
+        <parameter name="expectedSecureMsg" value="You logged into a secure area!"></parameter>
+        <classes>
+            <class name="com.herokuapp.theinternet.PositiveTests" />
+        </classes>
+    </test>
+    <test name="incorrectUsernameTest" >
+        <parameter name="username" value="incorrectUsername"></parameter>
+        <parameter name="password" value="SuperSecretPassword!"></parameter>
+        <parameter name="expecteLogindMsg" value="Your username is invalid!"></parameter>
+        <classes>
+            <class name="com.herokuapp.theinternet.NegativeTests" />
+        </classes>
+    </test>
+    <test name="incorrectPasswordTest" >
+        <parameter name="username" value="tomsmith"></parameter>
+        <parameter name="password" value="incorrectPwd"></parameter>
+        <parameter name="expecteLogindMsg" value="Your password is invalid!"></parameter>
+        <classes>
+            <class name="com.herokuapp.theinternet.NegativeTests" />
+        </classes>
+    </test>
+</suite>
